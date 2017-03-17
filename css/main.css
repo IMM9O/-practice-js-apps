@@ -2,3 +2,39 @@
     margin: 0;
     border-radius: 0;
 }
+
+.movies-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+.card {
+    position: relative;
+    height: 420px;
+    width: 200px;
+    background: saddlebrown;
+    display: block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 420px;
+}
+
+.card .title {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.70);
+    color: #FFF;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
