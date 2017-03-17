@@ -38,3 +38,22 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.rating {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.rating img {
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+}
+
+.rating .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
