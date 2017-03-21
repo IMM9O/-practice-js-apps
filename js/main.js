@@ -4,15 +4,13 @@ if (window.location.pathname === '/index.html' || window.location.pathname === '
     document.addEventListener('DOMContentLoaded', firstLoad, false);
 }
 
-
 function firstLoad() {
     var searchText = document.getElementById("searchText");
     searchText.addEventListener("keydown", e => {
-        if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
+        if (e.keyCode === 13) { //checks whether the pressed key is "Enter"
             renderMovies(e.target.value);
         }
     });
-
 
 }
 
@@ -20,25 +18,30 @@ function renderMovies(searchText) {
     console.log('called');
 
     let moviesTemplate = '';
-    fetch(`${MOVI_API}s=${searchText}`, {
-        method: 'GET'
-    }).then(response => {
+    fetch(`${MOVI_API}s=${searchText}`, {method: 'GET'}).then(response => {
         return response.json();
     }).then(response => {
-
-        response.Search.forEach(movie => {
-            moviesTemplate += `
+        console.log(response);
+        response
+            .Search
+            .forEach(movie => {
+                let posterImage = './../assets/images/movie-poster.jpg';
+                if (movie.Poster.includes('http')) {
+                    posterImage = movie.Poster;
+                }
+                moviesTemplate += `
             <div class="card" onclick="movieSelected('${movie.imdbID}')">
-              <img src="${movie.Poster}" alt=""> 
+              <img src="${posterImage}" alt=""> 
               <div class="title" > ${movie.Title} </div>
             </div>
             
             `;
-        });
-        document.getElementById('movies').innerHTML = moviesTemplate;
+            });
+        document
+            .getElementById('movies')
+            .innerHTML = moviesTemplate;
     });
 }
-
 
 function movieSelected(id) {
     sessionStorage.setItem('movieId', id);
@@ -50,22 +53,22 @@ function getMovie() {
     renderMovie(sessionStorage.getItem('movieId'));
 }
 
-
 function renderMovie(movieId) {
     let movieTemplate = '';
-    fetch(`${MOVI_API}i=${movieId}`, {
-        method: 'GET'
-    }).then(response => {
+    fetch(`${MOVI_API}i=${movieId}`, {method: 'GET'}).then(response => {
         return response.json();
     }).then(movie => {
-        console.log(movie);
+        let posterImage = './../assets/images/movie-poster.jpg';
+        if (movie.Poster.includes('http')) {
+            posterImage = movie.Poster;
+        }
         movieTemplate += `
              <div class="row">
                 <div class="col-md-12 well">
                     <div class="media">
                         <div class="media-left">
                             <a href="#">
-                            <img src="${movie.Poster}" alt="${movie.Title}">
+                            <img src="${posterImage}" alt="${movie.Title}">
                             </a>
                         </div>
                         <div class="media-body">
@@ -86,10 +89,10 @@ function renderMovie(movieId) {
                                  </div>
                                  <div class="col col-md-4">
                                     <div class="rating">
-                                        <img src="./../star.png" alt="">
+                                        <img src="./../assets/images/star.png" alt="">
                                         <div class="details">
-                                            <span>${ movie.imdbRating}</span>
-                                            <span>${ movie.imdbVotes}</span>
+                                            <span>${movie.imdbRating}</span>
+                                            <span>${movie.imdbVotes}</span>
                                         </div>
                                     </div>
                                  </div>
@@ -102,6 +105,8 @@ function renderMovie(movieId) {
                 </div>
             </div>
         `;
-        document.getElementById('movie').innerHTML = movieTemplate;
+        document
+            .getElementById('movie')
+            .innerHTML = movieTemplate;
     });
 }
