@@ -1,13 +1,29 @@
-.navbar {
-    margin-bottom: 0;
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
-.movies-component {
+.row.is-flex {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
     flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.thumbnail>img {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #FFF;
+    border-radius: 3px;
+}
+
+.thumbnail>.caption>p {
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color .15s ease-in-out;
+    -moz-transition: color .15s ease-in-out;
+    -webkit-transition: color .15s ease-in-out;
 }
 
 .card {

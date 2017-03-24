@@ -18,7 +18,7 @@ function renderMovies(searchText) {
     console.log('called');
 
     let moviesTemplate = '';
-    fetch(`${MOVI_API}s=${searchText}`, {method: 'GET'}).then(response => {
+    fetch(`${MOVI_API}s=${searchText}`, { method: 'GET' }).then(response => {
         return response.json();
     }).then(response => {
         console.log(response);
@@ -30,12 +30,15 @@ function renderMovies(searchText) {
                     posterImage = movie.Poster;
                 }
                 moviesTemplate += `
-            <div class="card" onclick="movieSelected('${movie.imdbID}')">
-              <img src="${posterImage}" alt=""> 
-              <div class="title" > ${movie.Title} </div>
-            </div>
-            
-            `;
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+                    <a href="#" class="thumbnail"  onclick="movieSelected('${movie.imdbID}')">
+                       <img class="img-responsive" src="${posterImage}" alt="${movie.imdbID}">
+                        <div class="caption">
+                            <p>${movie.Title}</p>
+                            <p>${movie.Year}</p>
+                        </div>
+                    </a>
+                </div>`;
             });
         document
             .getElementById('movies')
@@ -55,7 +58,7 @@ function getMovie() {
 
 function renderMovie(movieId) {
     let movieTemplate = '';
-    fetch(`${MOVI_API}i=${movieId}`, {method: 'GET'}).then(response => {
+    fetch(`${MOVI_API}i=${movieId}`, { method: 'GET' }).then(response => {
         return response.json();
     }).then(movie => {
         let posterImage = './../assets/images/movie-poster.jpg';
