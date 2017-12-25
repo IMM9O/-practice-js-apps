@@ -3,21 +3,26 @@ import getVal from './app/getInputValue'
 
 (function(){
 
+    // all selectors
+    const sizePicker =  document.querySelector("#sizePicker");
+    const resetBtn =  document.querySelector("#reset_btn");
+    const pixelCanvas =  document.querySelector("#pixel_canvas");
+
     // inital display
-    document.querySelector("#reset_btn").style.display = 'none';
+    resetBtn.style.display = 'none';
 
     // EventListeners 
-    document.querySelector("#sizePicker").addEventListener('submit', renderGrid);
-    document.querySelector("#reset_btn").addEventListener('click', resetTableBacground);
-    document.querySelector("#pixel_canvas").addEventListener('click',setCellBackground);
-    document.querySelector("#pixel_canvas").addEventListener('contextmenu',resetCellBackground);
+    sizePicker.addEventListener('submit', renderGrid);
+    resetBtn.addEventListener('click', resetTableBacground);
+    pixelCanvas.addEventListener('click',setCellBackground);
+    pixelCanvas.addEventListener('contextmenu',resetCellBackground);
 
     function renderGrid(evt){
         evt.preventDefault();
         const height = getVal('#input_height');
         const width = getVal('#input_width');
-        document.querySelector("#pixel_canvas").innerHTML = makeGrid(height, width);
-        document.querySelector("#reset_btn").style.display = 'inline-block';
+        pixelCanvas.innerHTML = makeGrid(height, width);
+        resetBtn.style.display = 'inline-block';
     }
 
     function setCellBackground(evt) {
@@ -36,7 +41,7 @@ import getVal from './app/getInputValue'
     }
 
     function isEventTargetHasThisName(evt, check) {
-        return event.target.tagName.toLowerCase() === check;
+        return evt.target.tagName.toLowerCase() === check;
     }
 
 })();
