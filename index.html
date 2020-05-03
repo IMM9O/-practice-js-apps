@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/dist/app.css">
+    <title>Project: Pixel Art Maker</title>
+    <meta name="description" content="Pixel art maker project - udacity frontend nanodegree">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Lab: Pixel Art Maker</h1>
+    
+        <h2>Choose Grid Size</h2>
+        <form id="sizePicker">
+            Grid Height:
+            <input type="number" id="input_height" name="height" min="10" max="100" value="10"> Grid Width:
+            <input type="number" id="input_width" name="width" min="10" max="100" value="10">
+            <input type="submit">
+            <button id="reset_btn">Reset</button>
+        </form>
+    
+        <h2>Pick A Color</h2>
+        <input type="color" id="colorPicker">
+    
+        <h2>Design Canvas</h2>
+        <table id="pixel_canvas"></table>
+    </div>
+
+    <script src="./dist/app.js"></script>
+</body>
+
+</html>
