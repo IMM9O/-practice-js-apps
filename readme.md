@@ -1,3 +1,3 @@
-# JS Apps
+# JS Apps 💻
 
-Group of apps build with pure javascript
+Apps build with pure javascript no framework or jquery!

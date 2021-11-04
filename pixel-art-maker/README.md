@@ -1,4 +1,14 @@
-# Pixel Art Maker
+# Pixel Art Maker 🎨
+
+<img src="./screenshot.png" align="center">
+
+## Perquisites
+
+* Node v14.18.0
+* 
+
+
+## Steps to run the application locallay
 
 ```bash
 # this project build using webpack
